@@ -1,0 +1,17 @@
+{
+  "name": "cvision-ai-backend",
+  "version": "1.0.0",
+  "description": "CVision AI CV analysis backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "openai": "^6.0.0"
+  }
+}

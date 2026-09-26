@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CVision — Smart CV Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M4 5.5A2.5 2.5 0 0 1 6.5 3H18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    />
+                    <path
+                        d="M8 8h8M8 12h6M8 16h4"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                </svg>
+            </div>
+
+            <div>
+                <strong>CVision</strong>
+                <span>Smart CV Analysis</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active" data-section="dashboard">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="6" height="6" rx="1"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="14" y="4" width="6" height="6" rx="1"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="4" y="14" width="6" height="6" rx="1"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="14" y="14" width="6" height="6" rx="1"
+                        stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-section="checker">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    />
+                    <path
+                        d="M14 3.5V8h4M8 12h8M8 16h5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                </svg>
+                CV Checker
+            </button>
+
+            <button class="nav-item" data-section="history">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M4 12a8 8 0 1 0 2.35-5.65"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                    <path
+                        d="M4 5v4h4M12 7v5l3 2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+                History
+            </button>
+
+            <button class="nav-item" data-section="roadmap">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="6" cy="6" r="2"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <circle cx="18" cy="12" r="2"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <circle cx="8" cy="18" r="2"
+                        stroke="currentColor" stroke-width="1.8"/>
+                    <path
+                        d="M8 7.2l7.8 3.6M16.7 13.7l-7 2.7"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                </svg>
+                Career Roadmap
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <div class="tip-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M9 18h6M10 21h4M8.5 15.5C7.55 14.7 7 13.5 7 12a5 5 0 1 1 10 0c0 1.5-.55 2.7-1.5 3.5-.65.55-1 1.2-1 2.5h-5c0-1.3-.35-1.95-1-2.5Z"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </div>
+
+                <strong>Quick tip</strong>
+                <p>Customize your CV for each job instead of sending the same version everywhere.</p>
+            </div>
+
+            <span class="version">CVision v1.0</span>
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">CV WORKSPACE</p>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-button"
+                    id="themeToggle"
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
+                >
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="4"
+                            stroke="currentColor" stroke-width="1.8"/>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+
+                <button class="primary-button" id="topAnalyze">
+                    Analyze CV
+                </button>
+
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="page-section active" id="dashboard">
+
+            <div class="hero">
+                <div>
+                    <span class="hero-label">SMART CV ANALYSIS</span>
+
+                    <h2>
+                        Build a stronger CV
+                        <span>with better insights.</span>
+                    </h2>
+
+                    <p>
+                        Analyze your CV, discover skill gaps, compare it with
+                        a job description, and get practical suggestions.
+                    </p>
+
+                    <button class="primary-button" id="heroAnalyze">
+                        Analyze My CV
+                    </button>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-document">
+                        <div class="document-top"></div>
+                        <div class="document-line long"></div>
+                        <div class="document-line"></div>
+                        <div class="document-line medium"></div>
+
+                        <div class="document-score">
+                            <span>CV Score</span>
+                            <strong id="heroScore">--</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h3>Overview</h3>
+                    <p>Your latest CV analysis at a glance.</p>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="8"
+                                stroke="currentColor" stroke-width="1.8"/>
+                            <path
+                                d="M12 8v4l2.5 2"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>CV Score</span>
+                        <strong id="scoreValue">--</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M5 12.5 9.2 17 19 7"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>Job Match</span>
+                        <strong id="jobMatchValue">--</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M4 7h16M4 12h16M4 17h10"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>Skills Found</span>
+                        <strong id="skillsValue">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Score Breakdown</h3>
+                            <p>How your CV performed.</p>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-list">
+
+                        <div class="progress-row">
+                            <div>
+                                <span>Sections</span>
+                                <strong id="sectionsScore">0%</strong>
+                            </div>
+                            <div class="progress">
+                                <span id="sectionsBar"></span>
+                            </div>
+                        </div>
+
+                        <div class="progress-row">
+                            <div>
+                                <span>Keywords</span>
+                                <strong id="keywordsScore">0%</strong>
+                            </div>
+                            <div class="progress">
+                                <span id="keywordsBar"></span>
+                            </div>
+                        </div>
+
+                        <div class="progress-row">
+                            <div>
+                                <span>Projects</span>
+                                <strong id="projectsScore">0%</strong>
+                            </div>
+                            <div class="progress">
+                                <span id="projectsBar"></span>
+                            </div>
+                        </div>
+
+                        <div class="progress-row">
+                            <div>
+                                <span>Experience</span>
+                                <strong id="experienceScore">0%</strong>
+                            </div>
+                            <div class="progress">
+                                <span id="experienceBar"></span>
+                            </div>
+                        </div>
+
+                        <div class="progress-row">
+                            <div>
+                                <span>Skills</span>
+                                <strong id="skillsScore">0%</strong>
+                            </div>
+                            <div class="progress">
+                                <span id="skillsBar"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>CV Insights</h3>
+                            <p>What is working and what needs attention.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-columns">
+
+                        <div>
+                            <h4 class="success-title">Strengths</h4>
+                            <div id="strengthsList" class="feedback-list">
+                                <div class="empty-message">
+                                    Analyze a CV to see your strengths.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="warning-title">Needs Attention</h4>
+                            <div id="weaknessesList" class="feedback-list">
+                                <div class="empty-message">
+                                    Your improvement areas will appear here.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Detected Skills</h3>
+                            <p>Skills found in your CV.</p>
+                        </div>
+                    </div>
+
+                    <div id="skillsList" class="tag-list">
+                        <span class="empty-message">No skills detected yet.</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Job Keywords</h3>
+                            <p>Keywords found in your target job.</p>
+                        </div>
+                    </div>
+
+                    <div id="keywordsList" class="keyword-groups">
+                        <div>
+                            <span class="keyword-label">Matched</span>
+                            <div id="matchedKeywords" class="tag-list"></div>
+                        </div>
+
+                        <div>
+                            <span class="keyword-label missing-label">Missing</span>
+                            <div id="missingKeywords" class="tag-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>CV Sections</h3>
+                        <p>Check whether your important sections are present.</p>
+                    </div>
+                </div>
+
+                <div id="sectionChecker" class="section-checker"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Suggestions</h3>
+                        <p>Practical ways to improve your CV.</p>
+                    </div>
+                </div>
+
+                <div id="suggestionsList" class="suggestion-list">
+                    <div class="empty-message">
+                        Suggestions will appear after analysis.
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CHECKER -->
+        <section class="page-section" id="checker">
+
+            <div class="page-intro">
+                <span class="hero-label">CV CHECKER</span>
+                <h2>Analyze your CV</h2>
+                <p>
+                    Paste your CV below and optionally add a job description
+                    to see how closely they match.
+                </p>
+            </div>
+
+            <div class="input-grid">
+
+                <div class="input-card">
+
+                    <div class="input-header">
+                        <div>
+                            <h3>Your CV</h3>
+                            <p>Paste the text from your CV.</p>
+                        </div>
+
+                        <button class="text-button" id="clearResume">
+                            Clear
+                        </button>
+                    </div>
+
+                    <textarea
+                        id="resumeText"
+                        placeholder="Paste your CV text here..."
+                    ></textarea>
+
+                    <div class="input-footer">
+                        <span id="resumeCount">0 characters</span>
+                    </div>
+
+                </div>
+
+                <div class="input-card">
+
+                    <div class="input-header">
+                        <div>
+                            <h3>Job Description</h3>
+                            <p>Optional, but useful for job matching.</p>
+                        </div>
+
+                        <button class="text-button" id="clearJob">
+                            Clear
+                        </button>
+                    </div>
+
+                    <textarea
+                        id="jobDescription"
+                        placeholder="Paste the job description here..."
+                    ></textarea>
+
+                    <div class="input-footer">
+                        <span id="jobCount">0 characters</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="analyze-area">
+                <div>
+                    <strong>Ready to analyze?</strong>
+                    <p id="analysisStatus">
+                        Add your CV and start your analysis.
+                    </p>
+                </div>
+
+                <button class="primary-button large" id="analyzeButton">
+                    Analyze CV
+                </button>
+            </div>
+
+        </section>
+
+        <!-- HISTORY -->
+        <section class="page-section" id="history">
+
+            <div class="page-intro history-intro">
+                <div>
+                    <span class="hero-label">YOUR HISTORY</span>
+                    <h2>Previous analyses</h2>
+                    <p>
+                        Review your previous CV checks and reopen an analysis.
+                    </p>
+                </div>
+
+                <button class="secondary-button" id="clearHistory">
+                    Clear History
+                </button>
+            </div>
+
+            <div id="historyList" class="history-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M4 12a8 8 0 1 0 2.35-5.65"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                            <path
+                                d="M4 5v4h4M12 7v5l3 2"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <h3>No analyses yet</h3>
+                    <p>
+                        Your completed CV analyses will appear here.
+                    </p>
+
+                    <button class="primary-button" id="historyAnalyze">
+                        Analyze a CV
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ROADMAP -->
+        <section class="page-section" id="roadmap">
+
+            <div class="page-intro">
+                <span class="hero-label">CAREER ROADMAP</span>
+                <h2>Your next steps</h2>
+                <p>
+                    A simple roadmap based on your CV analysis.
+                </p>
+            </div>
+
+            <div id="roadmapList" class="roadmap-list">
+
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="6" cy="6" r="2"
+                                stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="18" cy="12" r="2"
+                                stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="8" cy="18" r="2"
+                                stroke="currentColor" stroke-width="1.8"/>
+                            <path
+                                d="M8 7.2l7.8 3.6M16.7 13.7l-7 2.7"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <h3>Your roadmap will appear here</h3>
+                    <p>Analyze your CV to create your next career steps.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
