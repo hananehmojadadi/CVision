@@ -4,7 +4,7 @@
 
 CVision is a modern web application designed to help users review their CVs, identify areas for improvement, compare their resumes with job requirements, and build a clearer career development roadmap.
 
-![CVision Dashboard](cvision-dashboard.png)
+![CVision Dashboard](cvision-dashboards.png)
 
 ## Overview
 
